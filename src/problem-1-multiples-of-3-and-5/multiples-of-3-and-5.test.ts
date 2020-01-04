@@ -1,7 +1,13 @@
 import { NaturalNumber, sumOfMultiples3And5 } from './multiples-of-3-and-5';
 
-test('throws an error when trying instantiate a NaturalNumber with a float', () => {
-    expect(() => NaturalNumber.of(3.1416)).toThrow('NaturalNumber can only be instantiated with an integer.');
+test('throws an error when trying to instantiate a NaturalNumber with a float', () => {
+    expect(() => NaturalNumber.of(3.1416)).toThrow(
+        'NaturalNumber can only be instantiated with an non-negative integer.',
+    );
+});
+
+test('throws an error when trying to instantiate a NaturalNumber with a negative integer', () => {
+    expect(() => NaturalNumber.of(-4)).toThrow('NaturalNumber can only be instantiated with an non-negative integer.');
 });
 
 test.each([

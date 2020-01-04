@@ -1,8 +1,8 @@
 export class NaturalNumber {
     private constructor(private integer: number) {}
     static of(integer: number): NaturalNumber {
-        if (!Number.isInteger(integer)) {
-            throw new TypeError('NaturalNumber can only be instantiated with an integer.');
+        if (!Number.isInteger(integer) || integer < 0) {
+            throw new TypeError('NaturalNumber can only be instantiated with an non-negative integer.');
         }
         return new NaturalNumber(integer);
     }
