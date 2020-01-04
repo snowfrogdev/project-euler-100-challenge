@@ -3,7 +3,14 @@ export class NaturalNumber {
     static of(integer: bigint): NaturalNumber {
         return new NaturalNumber(integer);
     }
-    getMultiplesBelow(integer: bigint): bigint[] {
-        return [1n, 2n, 3n, 4n, 5n, 6n, 7n];
+    getMultiplesBelow(ceiling: bigint): bigint[] {
+        const multiples = [];
+        let multiple = this.integer;
+        for (let i = 1n; multiple < ceiling - this.integer; i++) {
+            multiple = i * this.integer;
+            multiples.push(multiple);
+        }
+
+        return multiples;
     }
 }
