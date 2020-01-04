@@ -1,7 +1,7 @@
-import { evenFibonacciSum } from './evenFibonacciSum';
+import { computeSumOfEvenFibonacciNumbers } from './evenFibonacciSum';
 
 test('Even Fibonacci', () => {
-    expect(evenFibonacciSum(10)).toBe(10);
-    expect(evenFibonacciSum(40)).toBe(44);
-    expect(evenFibonacciSum(4_000_000)).toBe(4613732);
+    expect(computeSumOfEvenFibonacciNumbers(10)).toBe(10);
+    expect(computeSumOfEvenFibonacciNumbers(40)).toBe(44);
+    expect(computeSumOfEvenFibonacciNumbers(4_000_000)).toBe(4613732);
 });

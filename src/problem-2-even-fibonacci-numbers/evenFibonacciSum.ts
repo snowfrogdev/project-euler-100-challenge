@@ -15,7 +15,7 @@ function* fibonacciSequence(maxTerm: number): Generator<number> {
     }
 }
 
-export const evenFibonacciSum = (maxTerm: number): number => {
+export const computeSumOfEvenFibonacciNumbers = (maxTerm: number): number => {
     let sum = 0;
 
     for (const term of fibonacciSequence(maxTerm)) {
