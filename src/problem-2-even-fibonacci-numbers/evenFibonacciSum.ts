@@ -1,3 +1,5 @@
+import { isOdd } from '../shared/shared';
+
 export const evenFibonacciSum = (maxTerm: number): number => {
     let lastTerm = 1;
     let secondToLastTerm = 0;
@@ -8,7 +10,7 @@ export const evenFibonacciSum = (maxTerm: number): number => {
 
     while (getNextTerm() < maxTerm) {
         const nextTerm = getNextTerm();
-        if (~nextTerm & 1) {
+        if (!isOdd(nextTerm)) {
             sum += nextTerm;
         }
         secondToLastTerm = lastTerm;
