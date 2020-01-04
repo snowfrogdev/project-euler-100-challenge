@@ -1,20 +1,27 @@
 import { isOdd } from '../shared/shared';
 
-export const evenFibonacciSum = (maxTerm: number): number => {
-    let lastTerm = 1;
-    let secondToLastTerm = 0;
+function* fibonacciSequence(maxTerm: number): Generator<number> {
+    let previousTerm = 0;
+    let currentTerm = 1;
 
-    const getNextTerm = (): number => lastTerm + secondToLastTerm;
-
-    let sum = 0;
+    const getNextTerm = (): number => previousTerm + currentTerm;
 
     while (getNextTerm() < maxTerm) {
         const nextTerm = getNextTerm();
-        if (!isOdd(nextTerm)) {
-            sum += nextTerm;
+        yield nextTerm;
+
+        previousTerm = currentTerm;
+        currentTerm = nextTerm;
+    }
+}
+
+export const evenFibonacciSum = (maxTerm: number): number => {
+    let sum = 0;
+
+    for (const term of fibonacciSequence(maxTerm)) {
+        if (!isOdd(term)) {
+            sum += term;
         }
-        secondToLastTerm = lastTerm;
-        lastTerm = nextTerm;
     }
 
     return sum;
