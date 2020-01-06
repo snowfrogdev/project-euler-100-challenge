@@ -6,7 +6,7 @@ function* fibonacciSequence(maxTerm: number): Generator<number> {
 
     const getNextTerm = (): number => previousTerm + currentTerm;
 
-    while (getNextTerm() < maxTerm) {
+    while (getNextTerm() <= maxTerm) {
         const nextTerm = getNextTerm();
         yield nextTerm;
 
