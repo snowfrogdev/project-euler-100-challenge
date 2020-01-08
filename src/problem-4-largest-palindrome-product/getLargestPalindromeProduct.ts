@@ -6,6 +6,7 @@ function isPalindrome(num: number): boolean {
             .reverse()
             .join(''),
     );
+
     return reversedNumber === num;
 }
 
