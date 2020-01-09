@@ -1,6 +1,6 @@
 import { primeNumbers } from '../shared/shared';
 
-export function getNthPrime(nthPrime: number): number {
+export const getNthPrime = (nthPrime: number): number => {
     for (const prime of primeNumbers()) {
         if (--nthPrime === 0) {
             return prime;
@@ -8,4 +8,4 @@ export function getNthPrime(nthPrime: number): number {
     }
 
     return 0;
-}
+};
