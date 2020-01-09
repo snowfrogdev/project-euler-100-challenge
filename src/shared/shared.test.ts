@@ -1,4 +1,4 @@
-import { isOdd } from './shared';
+import { isOdd, primeNumbers } from './shared';
 
 test.each([
     [1, true],
@@ -17,4 +17,12 @@ test.each([
 test('isOdd() throws if passed a non integer', () => {
     expect(() => isOdd(1.67)).toThrow('isOdd only works with integers.');
     expect(() => isOdd(-30.74)).toThrow('isOdd only works with integers.');
+});
+
+test('prime numbers generator', () => {
+    const primes = [...primeNumbers(100)];
+
+    const expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+
+    expect(primes).toEqual(expected);
 });
