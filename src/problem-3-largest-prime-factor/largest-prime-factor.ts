@@ -1,10 +1,4 @@
-import { isPrime } from '../shared/shared';
-
-export function* primeNumbers(limit = Number.MAX_VALUE): Generator<number> {
-    for (let num = 1; num < limit; num++) {
-        if (isPrime(num)) yield num;
-    }
-}
+import { primeNumbers } from '../shared/shared';
 
 export function getPrimeFactors(num: number): number[] {
     const factors: number[] = [];

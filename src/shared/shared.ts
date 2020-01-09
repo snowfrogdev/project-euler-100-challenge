@@ -19,3 +19,9 @@ export function isPrime(num: number): boolean {
 
     return true;
 }
+
+export function* primeNumbers(limit = Number.MAX_VALUE): Generator<number> {
+    for (let num = 1; num < limit; num++) {
+        if (isPrime(num)) yield num;
+    }
+}
