@@ -6,14 +6,33 @@ export const isOdd = (num: number): boolean => {
     return num & 1 ? true : false;
 };
 
-export function isPrime(num: number): boolean {
-    if (num <= 3) return num > 1;
+export function isStrongPseudoPrime(d: number, n: number): boolean {
+    const a = 2 + (getRandomIntInclusive(2, n - 2) % (n - 4));
 
-    if (num % 2 === 0 || num % 3 === 0) return false;
+    let x = powerMod(a, d, n);
 
-    for (let i = 5; i <= Math.sqrt(num); i += 6) {
-        if (num % i === 0 || num % (i + 2) === 0) return false;
+    if (x === 1 || x === n - 1) return true;
+
+    while (d !== n - 1) {
+        x = (x * x) % n;
+        d *= 2;
+
+        if (x === 1) return false;
+        if (x === n - 1) return true;
     }
+
+    return false;
+}
+
+export function isPrime(n: number): boolean {
+    if (n <= 1 || n == 4) return false;
+    if (n <= 3) return true;
+
+    let d = n - 1;
+
+    while (d % 2 == 0) d /= 2;
+
+    for (let i = 0; i < 7; i++) if (!isStrongPseudoPrime(d, n)) return false;
 
     return true;
 }
@@ -23,4 +42,24 @@ export function* primeNumbers(limit = Number.MAX_VALUE): Generator<number> {
     for (let num = 3; num < limit; num += 2) {
         if (isPrime(num)) yield num;
     }
+}
+
+export function powerMod(x: number, y: number, p: number): number {
+    let res = 1;
+    x = x % p;
+
+    while (y > 0) {
+        if ((y & 1) == 1) res = (res * x) % p;
+
+        y = y >> 1; // y = y/2
+        x = (x * x) % p;
+    }
+
+    return res;
+}
+
+export function getRandomIntInclusive(min: number, max: number): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
