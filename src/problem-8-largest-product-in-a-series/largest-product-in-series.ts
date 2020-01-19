@@ -5,7 +5,7 @@ const makeFindLargestProductInSeriesReducer = (nAdjacentDigits: number) => {
     return (largestProduct: number, _: number, index: number, array: number[]): number => {
         const seriesOfDigits = array.slice(index, index + nAdjacentDigits);
         const product = seriesOfDigits.reduce((a, b) => a * b);
-        return product > largestProduct ? product : largestProduct;
+        return Math.max(product, largestProduct);
     };
 };
 
